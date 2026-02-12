@@ -28,22 +28,12 @@ in
       modules-left = [ 
         "custom/appmenu" 
         "hyprland/workspaces" 
-        "group/links"
       ];
-      
-      modules-center = [ 
-        "hyprland/window" 
-      ];
-      
-      modules-right = [ 
-        "pulseaudio" 
-        "network" 
-        "group/hardware"
-        "battery" 
-        "clock" 
-        "tray" 
-        "custom/exit" 
-      ];
+
+      "custom/appmenu" = {
+        format = "";
+        on-click = "rofi -show drun";
+      };
 
       "hyprland/workspaces" = {
         on-scroll-up = "hyprctl dispatch workspace r-1";
@@ -52,46 +42,56 @@ in
         on-click = "activate";
       };
 
+      modules-center = [ 
+        "hyprland/window" 
+      ];
+      
       "hyprland/window" = {
         max-length = 40;
         separate-outputs = true;
       };
 
-      "group/hardware" = {
-        orientation = "horizontal";
-        modules = [ "cpu" "memory" ];
-      };
-
-      "cpu" = { format = " {usage}%"; };
-      "memory" = { format = " {percentage}%"; };
-
-      "pulseaudio" = {
-        format = "{icon} {volume}%";
-        format-muted = "";
-        format-icons = { default = ["" "" ""]; };
-        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-      };
+      modules-right = [ 
+        "pulseaudio"
+        "network"
+        "battery"
+        "tray"
+        "custom/exit"
+        "clock"
+      ];
 
       "network" = {
-        format-wifi = "";
-        format-ethernet = "";
-        tooltip-format = "{essid}";
+        "format-wifi" = ""; 
+        "format-ethernet" = "";
+        "format-disconnected" = "⚠";
+        "tooltip-format" = "{essid} ({signalStrength}%)";
+        "on-click" = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
       };
 
-      "clock" = {
-        format = "{:%H:%M}";
-        tooltip-format = "{:%A, %d. %B %Y}";
+      "battery" = {
+        "states" = { "warning" = 30; "critical" = 15; };
+        "format" = "{icon} {capacity}%";
+        "format-charging" = " {capacity}%";
+        "format-plugged" = " {capacity}%";
+        "format-icons" = ["" "" "" "" ""];
       };
 
-      "custom/appmenu" = {
-        format = "";
-        on-click = "rofi -show drun";
+      "tray" = {
+        "icon-size" = 18;
+        "spacing" = 10;
       };
 
       "custom/exit" = {
-        format = "";
-        on-click = "wlogout";
+        "format" = "";
+        "on-click" = "${pkgs.wlogout}/bin/wlogout -b 2";
+        "tooltip" = false;
       };
+
+      "clock" = {
+        "interval" = 1;
+        "format" = "{:%H:%M:%S - %d.%m.%y}";
+        "tooltip-format" = "<tt><small>{calendar}</small></tt>";
+      };    
     }];
 
     style = ''
@@ -106,12 +106,10 @@ in
         background-color: ${colors.bar_bg};
       }
 
-      /* Gemeinsames Styling für alle "Boxen" */
       #workspaces,
       #window,
       #pulseaudio,
       #network,
-      #group-hardware,
       #battery,
       #clock,
       #tray,
@@ -126,7 +124,6 @@ in
         transition: all 0.3s ease;
       }
 
-      /* Workspaces Spezifisch */
       #workspaces {
         padding: 0px 4px;
       }
@@ -143,13 +140,11 @@ in
         border-radius: 8px;
       }
 
-      /* Window Titel Box */
       #window {
-        background-color: transparent; /* Center oft ohne Box oder dezenter */
+        background-color: transparent;
         border: none;
       }
 
-      /* Interaktive Elemente Hover-Effekt */
       #custom-appmenu:hover,
       #custom-exit:hover,
       #pulseaudio:hover {
@@ -159,11 +154,6 @@ in
 
       #clock {
         font-weight: bold;
-      }
-
-      /* Hardware Group Korrektur */
-      #cpu, #memory {
-        padding: 0 6px;
       }
     '';
   };

@@ -10,7 +10,7 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  services.getty.helpLine = "Welcome to NixOS! :3";
+  services.getty.helpLine = "NixOS-Config by LukasxLama :3";
   
   systemd.services."getty@tty1" = {
     overrideStrategy = "asDropin";
@@ -27,7 +27,8 @@
   '';
 
   services.dbus.enable = true;
-  
+  security.pam.services.hyprlock = {};
+
   systemd.user.services.polkit-gnome-authentication-agent-1 = {
     description = "polkit-gnome-authentication-agent-1";
     wantedBy = [ "graphical-session.target" ];

@@ -1,11 +1,31 @@
 { config, pkgs, ... }:
 
+let
+  videoWallpaper = ./assets/background/animated_dogs.mp4;
+  fallbackImage = ./assets/background/animated_dogs.jpg;
+
+  startWallpaper = pkgs.writeShellScript "start-wallpaper" ''
+    pkill mpvpaper
+    pkill swaybg
+
+    ${pkgs.swaybg}/bin/swaybg -i ${fallbackImage} -m fill &
+
+    sleep 0.5
+
+    ${pkgs.mpvpaper}/bin/mpvpaper -o "--loop --no-audio --panscan=1 --hwdec=auto" "*" ${videoWallpaper}
+  '';
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      misc = {
+        force_default_wallpaper = 0;
+        disable_hyprland_logo = true;
+      };
+
       exec-once = [
-        "hyprctl setcursor Bibata-Modern-Classic 24"
+        "${startWallpaper}"
       ];
 
       monitor = [
@@ -71,14 +91,15 @@
       "$mod" = "SUPER";
       bind = [
         "$mod, Return, exec, kitty"
-        "CONTROL_$mod, Return, exec, wofi --show drun"
+        "CONTROL_$mod, Return, exec, rofi -show drun"
         "$mod, Q, killactive,"
         "$mod SHIFT, M, exit,"
         "$mod, V, togglefloating,"
         "$mod, F, fullscreen,"
         "$mod, P, pseudo," 
         "$mod, J, togglesplit," 
-
+        "$mod, L, exec, hyprlock"
+        
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
         "$mod, 3, workspace, 3"
@@ -101,7 +122,7 @@
         "$mod SHIFT, 9, movetoworkspace, 9"
         "$mod SHIFT, 0, movetoworkspace, 10"
 
-        "$mod CONTROL SHIFT, B, exec, kitty --title 'NixOS Rebuild' sh -c 'sudo nixos-rebuild switch --flake /home/lukas/nixos-config#$(hostname) && notify-send \"System aktualisiert!\" || notify-send \"Rebuild fehlgeschlagen!\"'"
+        "$mod CONTROL SHIFT, B, exec, kitty --title 'NixOS Rebuild' sh -c 'sudo nixos-rebuild switch --flake /home/lukas/nixos-config#$(hostname) && notify-send \"System updated!\" || notify-send \"Rebuild failed!\"'"
       ];
     };
   };

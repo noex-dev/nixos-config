@@ -2,6 +2,17 @@
 
 {
   home.packages = with pkgs; [
+    # Hyprland
+    hyprlock
+    
+    # Waybar
+    wlogout
+    
+    # Background
+    swaybg
+    mpvpaper
+
+    # Other
     vscode
     btop
     firefox
@@ -18,6 +29,6 @@
     };
   };
 
-  programs.wofi.enable = true;
+  programs.rofi.enable = true;
   programs.home-manager.enable = true;
 }

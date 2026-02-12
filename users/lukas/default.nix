@@ -2,11 +2,14 @@
 
 {
   imports = [
-    ./shell.nix
-    ./hyprland.nix
-    ./waybar.nix
     ./programs.nix
+    ./hyprland.nix
+    ./hyprlock.nix
     ./theme.nix
+    ./waybar.nix
+    ./rofi.nix
+    ./wlogout.nix
+    ./shell.nix
   ];
 
   home.username = "lukas";
