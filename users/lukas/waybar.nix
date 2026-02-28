@@ -19,7 +19,7 @@ in
     settings = [{
       layer = "top";
       position = "top";
-      height = 38;
+      height = 42;
       margin-top = 4;
       margin-left = 8;
       margin-right = 8;

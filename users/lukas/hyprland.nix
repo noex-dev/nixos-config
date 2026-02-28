@@ -5,14 +5,13 @@ let
   fallbackImage = ./assets/background/animated_dogs.jpg;
 
   startWallpaper = pkgs.writeShellScript "start-wallpaper" ''
-    pkill mpvpaper
-    pkill swaybg
-
+    pkill mpvpaper || true
+    pkill swaybg || true
+    
     ${pkgs.swaybg}/bin/swaybg -i ${fallbackImage} -m fill &
+    SWAYBG_PID=$!
 
-    sleep 0.5
-
-    ${pkgs.mpvpaper}/bin/mpvpaper -o "--loop --no-audio --panscan=1 --hwdec=auto" "*" ${videoWallpaper}
+    ${pkgs.mpvpaper}/bin/mpvpaper -o "--loop --no-audio --panscan=1 --hwdec=auto" "*" ${videoWallpaper} &
   '';
 in
 {
