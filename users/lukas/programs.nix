@@ -1,6 +1,43 @@
 { pkgs, ... }:
 
 {
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Lukas Sanz";
+        email = "lukassanz11@gmail.com";
+      };
+      gpg.format = "ssh";
+      commit.gpgsign = true;
+    };
+    
+    signing = {
+      key = "/home/lukas/.ssh/id_github";
+      signByDefault = true;
+    };
+  };
+
+  programs.ssh = {
+    enable = true;
+    # Das hier schaltet die Warnung ab:
+    enableDefaultConfig = false; 
+    
+    matchBlocks = {
+      "github.com" = {
+        identityFile = "/home/lukas/.ssh/id_github";
+        identitiesOnly = true; 
+      };
+
+      "*" = {
+        identityFile = [
+          "~/.ssh/id_ed25519"
+          "~/.ssh/id_rsa"
+        ];
+      };
+    };
+  };
+
   home.packages = with pkgs; [
     # Hyprland
     hyprlock

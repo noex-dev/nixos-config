@@ -7,6 +7,7 @@
     ./desktop.nix
     ./networking.nix
     ./programs.nix
+    ./sops.nix
     ./virtualisation.nix
   ];
 
