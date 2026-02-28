@@ -23,6 +23,7 @@
   };
   
   environment.systemPackages = with pkgs; [
+    git-lfs
     curl
     wget
     unzip
