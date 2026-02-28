@@ -13,20 +13,24 @@
     };
     
     signing = {
-      key = "/home/lukas/.ssh/id_github";
+      key = "/home/lukas/.ssh/id_git";
       signByDefault = true;
     };
   };
 
   programs.ssh = {
     enable = true;
-    # Das hier schaltet die Warnung ab:
     enableDefaultConfig = false; 
     
     matchBlocks = {
       "github.com" = {
-        identityFile = "/home/lukas/.ssh/id_github";
+        identityFile = "/home/lukas/.ssh/id_git";
         identitiesOnly = true; 
+      };
+
+      "git.robo4you.at" = {
+        identityFile = "/home/lukas/.ssh/id_git";
+	identitiesOnly = true;
       };
 
       "*" = {

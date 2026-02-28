@@ -13,9 +13,9 @@
     
     age.generateKey = true;
 
-    secrets.github_ssh_key = {
+    secrets.git_ssh_key = {
       owner = "lukas";
-      path = "/home/lukas/.ssh/id_github";
+      path = "/home/lukas/.ssh/id_git";
     };
   };
 }
