@@ -16,9 +16,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    tree
     curl
     wget
-
     unzip
     zip
   ];
