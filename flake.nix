@@ -16,48 +16,37 @@
     {
       self,
       nixpkgs,
-      nixos-hardware,
-      sops-nix,
-      pre-commit-hooks,
       home-manager,
+      sops-nix,
       ...
     }@inputs:
+    let
+      mkSystem =
+        hostname:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            { nixpkgs.config.allowUnfree = true; }
+            ./hosts/${hostname}/default.nix # <--- Hier passiert die Magie
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+                users.lukas = import ./users/lukas/default.nix;
+              };
+            }
+          ];
+        };
+    in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
-
       nixosConfigurations = {
-        pc = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            {
-              nixpkgs.config.allowUnfree = true;
-            }
-            ./hosts/pc/default.nix
-            home-manager.nixosModules.home-manager
-            sops-nix.nixosModules.sops
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.lukas = import ./users/lukas/default.nix;
-            }
-          ];
-        };
-        p16s = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            {
-              nixpkgs.config.allowUnfree = true;
-            }
-            ./hosts/p16s/default.nix
-            home-manager.nixosModules.home-manager
-            sops-nix.nixosModules.sops
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.lukas = import ./users/lukas/default.nix;
-            }
-          ];
-        };
+        pc = mkSystem "pc";
+        p16s = mkSystem "p16s";
       };
+
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
     };
 }

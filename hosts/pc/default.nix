@@ -13,6 +13,10 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  home-manager.users.lukas = {
+    imports = [ ./monitor.nix ];
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -29,6 +33,5 @@
     LIBVA_DRIVER_NAME = "nvidia";
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    WLR_NO_HARDWARE_CURSORS = "1";
   };
 }

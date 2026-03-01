@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 let
   videoWallpaper = ./assets/background/animated_dogs.mp4;
@@ -7,11 +11,14 @@ let
   startWallpaper = pkgs.writeShellScript "start-wallpaper" ''
     pkill mpvpaper || true
     pkill swaybg || true
+    sleep 1
 
-    ${pkgs.swaybg}/bin/swaybg -i ${fallbackImage} -m fill &
-    SWAYBG_PID=$!
+    MONITORS=$(${pkgs.hyprland}/bin/hyprctl monitors | grep "Monitor" | awk '{print $2}')
 
-    ${pkgs.mpvpaper}/bin/mpvpaper -o "--loop --no-audio --panscan=1 --hwdec=auto" "*" ${videoWallpaper} &
+    for m in $MONITORS; do
+      ${pkgs.swaybg}/bin/swaybg -o "$m" -i ${fallbackImage} -m fill &
+      ${pkgs.mpvpaper}/bin/mpvpaper -o "--loop --no-audio --panscan=1 --hwdec=auto" "$m" ${videoWallpaper} &
+    done
   '';
 in
 {
@@ -25,10 +32,6 @@ in
 
       exec-once = [
         "${startWallpaper}"
-      ];
-
-      monitor = [
-        ",preferred,auto,1"
       ];
 
       input = {
