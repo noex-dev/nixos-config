@@ -16,12 +16,5 @@
     auto-optimise-store = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    git
-    neovim
-    wget
-    curl
-  ];
-
   system.stateVersion = "25.11";
 }
