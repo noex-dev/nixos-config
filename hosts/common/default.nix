@@ -7,6 +7,7 @@
     ./users.nix
     ./desktop.nix
     ./networking.nix
+    ./audio.nix
     ./programs.nix
     ./sops.nix
     ./virtualisation.nix
