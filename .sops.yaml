@@ -2,5 +2,11 @@ creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
       - age:
+        # Bitwarden: Editor Key
         - age1jduzksjl7nsegr9h5mngfpthzwc52tcj4f82cyjert9qsr4rxufs96wt45
+        
+        # Host Key "pc"
         - age1lj9zvte2dr95m2anh6xh4kydrcvh5gmcuxvdsgs0e3pdwks4de5q8a673z
+
+        # Host Key "p16s"
+        - age1pp542rr87ezr7lffhm7xpymtc3p3g8eg4gqswv8vqp5metewpflqhukphf
