@@ -43,21 +43,15 @@
   };
 
   home.packages = with pkgs; [
-    # Hyprland
     hyprlock
-
-    # Waybar
     wlogout
-
-    # Background
     swaybg
     mpvpaper
-
-    # Other
     vscode
     btop
     firefox
     bitwarden-desktop
+    yazi
   ];
 
   programs.kitty = {
