@@ -6,6 +6,8 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "docker"
+      "kvm"
     ];
     shell = pkgs.zsh;
   };

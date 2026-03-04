@@ -1,7 +1,18 @@
 { pkgs, config, ... }:
 
 {
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      kplay = "mpv --vo=tct --panscan=1.0";
+    };
+
+    interactiveShellInit = ''
+      use() {
+        nix shell "nixpkgs#$1" "''${@:2}"
+      }
+    '';
+  };
 
   programs.neovim = {
     enable = true;
