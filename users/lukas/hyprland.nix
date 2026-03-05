@@ -38,7 +38,7 @@ in
         kb_layout = "de";
         kb_variant = "";
         follow_mouse = 1;
-        touchpad.natural_scroll = true;
+        touchpad.natural_scroll = false;
       };
 
       general = {
@@ -123,8 +123,25 @@ in
         "$mod SHIFT, 8, movetoworkspace, 8"
         "$mod SHIFT, 9, movetoworkspace, 9"
         "$mod SHIFT, 0, movetoworkspace, 10"
+      ];
 
-        "$mod CONTROL SHIFT, B, exec, kitty --title 'NixOS Rebuild' sh -c 'sudo nixos-rebuild switch --flake /home/lukas/nixos-config#$(hostname) && notify-send \"System updated!\" || notify-send \"Rebuild failed!\"'"
+      bindel = [
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+      ];
+
+      bindl = [
+        ", XF86Display, exec, wdisplays"
+
+        ", XF86WLAN, exec, nmcli radio wifi $(nmcli radio wifi | grep -q 'enabled' && echo 'off' || echo 'on')"
+
+        ", XF86NotificationCenter, exec, swaync-client -t -sw"
       ];
     };
   };

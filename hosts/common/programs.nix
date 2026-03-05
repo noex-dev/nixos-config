@@ -42,6 +42,8 @@
 
     swaynotificationcenter
     libnotify
+    brightnessctl
+    wdisplays
 
     davinci-resolve
     bambu-studio
