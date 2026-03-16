@@ -11,12 +11,21 @@
     systemd.enable = true;
 
     settings = {
+      theme.matugen = true;
+      theme.matugen_settings = {
+        wallpaper = "/home/lukas/nixos-config/users/lukas/assets/background/animated_dogs.jpg";
+        scheme = "scheme-tonal-spot";
+      };
+
+      wallpaper.image = "/home/lukas/nixos-config/users/lukas/assets/background/animated_dogs.jpg";
+
       bar = {
         layouts."0" = {
           left = [
             "dashboard"
             "workspaces"
             "notifications"
+            "media"
           ];
           middle = [ "windowtitle" ];
           right = [
@@ -47,17 +56,18 @@
         clock.format = "%H:%M:%S - %d.%m.%Y";
       };
 
+      menus.clock = {
+        weather.enabled = false;
+      };
+
       menus.dashboard = {
         user.name = "Lukas";
         shortcuts.enabled = false;
         directories.enabled = false;
         stats.enabled = true;
-
-        weather = {
-          enabled = true;
-          unit = "metric";
-          location = "Vienna";
-        };
+        weather.enabled = true;
+        weather.unit = "metric";
+        weather.location = "Vienna";
       };
 
       system.battery.device = "BAT0";
@@ -82,10 +92,7 @@
   services.swaync.enable = false;
 
   home.packages = with pkgs; [
-    hyprpicker
-    hyprsunset
     hypridle
-    btop
-    grimblast
+    matugen
   ];
 }

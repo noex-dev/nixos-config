@@ -67,6 +67,14 @@
     };
   };
 
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [
+      "--cmd j"
+    ];
+  };
+
   home.packages = with pkgs; [
     nerd-fonts.symbols-only
   ];
