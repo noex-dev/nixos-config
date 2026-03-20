@@ -1,2 +1,2 @@
-users/noel/assets/** filter=lfs diff=lfs merge=lfs -text
+assets/ filter=lfs diff=lfs merge=lfs -text
 assets/background/animated_dogs.mp4 filter=lfs diff=lfs merge=lfs -text
