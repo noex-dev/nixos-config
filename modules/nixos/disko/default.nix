@@ -1,5 +1,7 @@
 { disko, ... }:
 {
+  filesystems."/persist".neededForBoot = true;
+
   disko.devices = {
     nodev."/" = {
       fsType = "tmpfs";
@@ -46,7 +48,6 @@
                       "compress=zstd"
                       "noatime"
                     ];
-                    neededForBoot = true;
                   };
                 };
               };
