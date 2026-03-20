@@ -5,6 +5,8 @@
     ./hardware-configuration.nix
 
     ../common
+    ../../modules/nixos/disko
+    ../../modules/nixos/impermanence
     ../../modules/nixos/audio
     ../../modules/nixos/desktop
     ../../modules/nixos/network

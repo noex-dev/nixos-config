@@ -2,7 +2,10 @@
   disko.devices = {
     nodev."/" = {
       fsType = "tmpfs";
-      mountOptions = [ "size=16G" "mode=755" ];
+      mountOptions = [
+        "size=16G"
+        "mode=755"
+      ];
     };
 
     disk.main = {
@@ -31,11 +34,17 @@
                 subvolumes = {
                   "/nix" = {
                     mountpoint = "/nix";
-                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
                   "/persist" = {
                     mountpoint = "/persist";
-                    mountOptions = [ "compress=zstd" "noatime" ];
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
                   };
                 };
               };
