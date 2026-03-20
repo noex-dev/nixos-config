@@ -46,6 +46,7 @@
                       "compress=zstd"
                       "noatime"
                     ];
+                    neededForBoot = true;
                   };
                 };
               };
