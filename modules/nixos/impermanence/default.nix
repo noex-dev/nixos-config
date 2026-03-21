@@ -11,6 +11,7 @@
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/etc/ssh"
+      "/etc/secureboot"
     ];
     files = [
       "/etc/machine-id"
