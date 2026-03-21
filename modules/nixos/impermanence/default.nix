@@ -11,7 +11,7 @@
       "/var/lib/networkmanager"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
-      "etc/ssh"
+      "/etc/ssh"
     ];
     files = [
       "/etc/machine-id"
