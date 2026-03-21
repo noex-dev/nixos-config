@@ -7,9 +7,9 @@
     defaultSopsFile = ../../../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
 
-    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
-    age.keyFile = "/var/lib/sops-nix/key.txt";
+    age.keyFile = "/persist/var/lib/sops-nix/key.txt";
 
     age.generateKey = true;
 
