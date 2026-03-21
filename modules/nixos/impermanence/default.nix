@@ -10,7 +10,7 @@
       "/var/lib/bluetooth"
       "/var/lib/networkmanager"
       "/var/lib/nixos"
-      "var/lib/systemd/coredump"
+      "/var/lib/systemd/coredump"
       "etc/ssh"
     ];
     files = [
