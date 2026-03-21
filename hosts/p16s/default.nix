@@ -28,7 +28,10 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     acpi_call
   ];
-
+  boot.initrd.luks.devices."crypted" = {
+    device = "/dev/disk/by-partlabel/disk-main-luks";
+    crypttabExtraOpts = [ "tpm2-device=auto" ];
+  };
   networking.hostName = "p16s";
 
   boot.loader.systemd-boot.enable = true;
