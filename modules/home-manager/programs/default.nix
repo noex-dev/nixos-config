@@ -10,10 +10,11 @@
       };
       gpg.format = "ssh";
       commit.gpgsign = true;
+      safe.directory = "/persist/etc/nixos";
     };
 
     signing = {
-      key = "/home/noel/.ssh/id_git";
+      key = "/run/secrets/git_ssh_key";
       signByDefault = true;
     };
   };
@@ -24,12 +25,12 @@
 
     matchBlocks = {
       "github.com" = {
-        identityFile = "/home/noel/.ssh/id_git";
+        identityFile = "/run/secrets/git_ssh_key";
         identitiesOnly = true;
       };
 
       "git.robo4you.at" = {
-        identityFile = "/home/noel/.ssh/id_git";
+        identityFile = "/run/secrets/git_ssh_key";
         identitiesOnly = true;
       };
 

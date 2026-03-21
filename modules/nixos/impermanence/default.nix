@@ -16,5 +16,27 @@
     files = [
       "/etc/machine-id"
     ];
+
+    users.noel = {
+      directories = [
+        "Documents"
+        "Downloads"
+        "Pictures"
+        "Music"
+        "Videos"
+
+        ".ssh"
+        ".local/share/keyrings"
+        ".config/discord"
+        ".config/Signal"
+        ".config/Bitwarden"
+        ".local/share/Anki2"
+        ".local/share/Steam"
+        ".steam"
+      ];
+      files = [
+        ".zsh_history"
+      ];
+    };
   };
 }

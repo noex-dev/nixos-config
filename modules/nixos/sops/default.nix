@@ -15,7 +15,6 @@
 
     secrets.git_ssh_key = {
       owner = "noel";
-      path = "/home/noel/.ssh/id_git";
     };
 
     secrets.noel_password = {
