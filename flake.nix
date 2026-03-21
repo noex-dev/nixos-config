@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +28,7 @@
     {
       self,
       nixpkgs,
+      lanzaboote,
       disko,
       impermanence,
       home-manager,
@@ -38,6 +43,7 @@
           modules = [
             { nixpkgs.config.allowUnfree = true; }
             ./hosts/${hostname}/default.nix
+            lanzaboote.nixosModules.lanzaboote
             disko.nixosModules.disko
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
