@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
 
     ../common
+    ../../modules/nixos/lanzaboot
     ../../modules/nixos/disko
     ../../modules/nixos/impermanence
     ../../modules/nixos/audio
