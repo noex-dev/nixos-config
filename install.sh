@@ -48,6 +48,7 @@ echo "3. Run: git commit -am 'add sops key for $HOST' && git push"
 echo "=================================================================="
 read -p "Press ENTER once the changes have been pushed..."
 
+git reset --hard HEAD
 git pull --rebase origin main
 
 nixos-install --flake ".#$HOST" --root /mnt --no-root-passwd
