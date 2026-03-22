@@ -11,7 +11,7 @@
       "/etc/NetworkManager/system-connections"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
-      "/var/lib/flatpak"
+      "/var/lib/libvirt"
       "/etc/ssh"
       "/etc/secureboot"
     ];
@@ -36,7 +36,6 @@
         ".config/Bitwarden"
         ".local/share/Anki2"
         ".local/share/Steam"
-        ".local/share/flatpak"
         ".var/app"
         ".steam"
       ];

@@ -9,6 +9,7 @@
     ../../modules/nixos/impermanence
     ../../modules/nixos/audio
     ../../modules/nixos/desktop
+    ../../modules/nixos/virtualisation
     ../../modules/nixos/network
     ../../modules/nixos/programs
   ];
