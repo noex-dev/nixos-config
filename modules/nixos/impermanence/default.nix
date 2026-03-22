@@ -12,7 +12,11 @@
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/var/lib/libvirt"
+      "/var/lib/swtpm"
+      "/var/log/swtpm"
+      "/var/lib/swtpm-localca"
       "/etc/ssh"
+      "/etc/libvirt"
       "/etc/secureboot"
     ];
     files = [

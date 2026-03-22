@@ -37,12 +37,21 @@
   };
 
   services.dbus.enable = true;
-  security.polkit.enable = true;
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
+  security.polkit.enable = true;
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, user) {
+      if (action.id == "org.libvirt.unix.manage" &&
+          user.isInGroup("libvirtd")) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
   environment.systemPackages = with pkgs; [
-    polkit_gnome
+    hyprpolkitagent
     gnome-themes-extra
     papirus-icon-theme
     bibata-cursors
