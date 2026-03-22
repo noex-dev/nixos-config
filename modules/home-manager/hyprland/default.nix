@@ -20,6 +20,12 @@ let
       ${pkgs.mpvpaper}/bin/mpvpaper -o "--loop --no-audio --panscan=1 --hwdec=auto" "$m" ${videoWallpaper} &
     done
   '';
+
+  configure-shortcuts = pkgs.writeShellScript "configure-shortcuts" ''
+    ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    ${pkgs.systemd}/bin/systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    ${pkgs.systemd}/bin/systemctl --user restart xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+  '';
 in
 {
   wayland.windowManager.hyprland = {
@@ -31,6 +37,7 @@ in
       };
 
       exec-once = [
+        "${configure-shortcuts}"
         "${startWallpaper}"
       ];
 

@@ -6,12 +6,30 @@
     xwayland.enable = true;
   };
 
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.common.default = [
+      "hyprland"
+      "gtk"
+    ];
   };
 
-  services.getty.helpLine = "nixos-config by noex; see https://github.com/noex/nixos-config.git";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+  };
 
+  services.dbus.enable = true;
+  security.polkit.enable = true;
+  programs.dconf.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
+
+  services.getty.helpLine = "nixos-config by noex; see https://github.com/noex/nixos-config.git";
   systemd.services."getty@tty1" = {
     overrideStrategy = "asDropin";
     serviceConfig.ExecStart = [
@@ -22,23 +40,9 @@
 
   programs.zsh.loginShellInit = ''
     if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-      exec start-hyprland
+      exec Hyprland # Wir rufen Hyprland direkt auf
     fi
   '';
-
-  services.dbus.enable = true;
-  security.pam.services.hyprlock = { };
-
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-    };
-  };
 
   environment.systemPackages = with pkgs; [
     polkit_gnome
@@ -46,5 +50,7 @@
     papirus-icon-theme
     bibata-cursors
     orchis-theme
+    firefox
+    xdg-utils
   ];
 }

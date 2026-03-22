@@ -25,6 +25,7 @@
         "Music"
         "Videos"
 
+        ".mozilla"
         ".ssh"
         ".local/share/keyrings"
         ".config/discord"
@@ -39,4 +40,6 @@
       ];
     };
   };
+
+  programs.fuse.userAllowOther = true;
 }
