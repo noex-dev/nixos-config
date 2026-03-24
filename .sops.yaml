@@ -4,9 +4,9 @@ creation_rules:
       - age:
         # Bitwarden: Editor Key
         - age1jduzksjl7nsegr9h5mngfpthzwc52tcj4f82cyjert9qsr4rxufs96wt45
-        
+
         # Host Key "pc"
-        - age1sgg2e5twr0sf4mcawcxmetwa2xl3lvlh0k2d7s0k7fdus3vrkeyq3htp54
+        - age1yvpufjuq0uugvmdrz389dsep93l9ywuqpn35u7j6329m5nd6jvkq6gth4p
 
         # Host Key "p16s"
         - age1fkf5wpkxkda5yanqcqgcn0pkmvrzmwaylp3uste7p677ltxgwcnqyayfpa
