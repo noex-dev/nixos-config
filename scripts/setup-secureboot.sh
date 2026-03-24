@@ -15,10 +15,7 @@ PERSIST_PATH="/persist/etc/secureboot"
 mkdir -p "$PERSIST_PATH"
 
 if [ ! -f "$PERSIST_PATH/keys/PK/PK.key" ]; then
-    TEMP_KEYS=$(mktemp -d)
-    sbctl create-keys --export "$TEMP_KEYS" --disable-landlock
-    cp -r "$TEMP_KEYS"/* "$PERSIST_PATH/"
-    rm -rf "$TEMP_KEYS"
+    sbctl create-keys --export "$PERSIST_PATH" --disable-landlock
 fi
 
 mkdir -p /etc/secureboot
