@@ -3,15 +3,6 @@
 {
   programs.zsh = {
     enable = true;
-    shellAliases = {
-      kplay = "mpv --vo=tct --panscan=1.0";
-    };
-
-    interactiveShellInit = ''
-      use() {
-        nix shell "nixpkgs#$1" "''${@:2}"
-      }
-    '';
   };
 
   programs.neovim = {
@@ -39,6 +30,7 @@
   environment.systemPackages = with pkgs; [
     tree
     curl
+    btop
 
     libnotify
     brightnessctl

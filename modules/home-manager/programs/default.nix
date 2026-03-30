@@ -50,7 +50,6 @@
     discord
     orca-slicer
 
-    btop
     vlc
     mpv
     ffmpeg
@@ -58,13 +57,10 @@
     krita
     anki-bin
 
-    yazi
     file
     ffmpegthumbnailer
     imagemagick
     poppler-utils
-    fzf
-    ripgrep
 
     hyprlock
     wlogout

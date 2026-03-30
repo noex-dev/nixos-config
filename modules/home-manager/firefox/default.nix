@@ -72,6 +72,7 @@
                   {
                     name = "HackTheBox";
                     url = "https://www.hackthebox.com/";
+                    keyword = "htb";
                   }
                 ];
               }
@@ -83,7 +84,7 @@
                   {
                     name = "Gemini";
                     url = "https://gemini.google.com/";
-                    keyword = "ai";
+                    keyword = "gai";
                   }
                   {
                     name = "DeepL";
@@ -93,12 +94,14 @@
                   {
                     name = "CyberChef";
                     url = "https://gchq.github.io/CyberChef/";
+                    keyword = "cc";
                   }
                   {
                     name = "VirusTotal";
                     url = "https://www.virustotal.com/";
                     keyword = "vt";
                   }
+
                   {
                     name = "Wayback Machine";
                     url = "https://web.archive.org/";
@@ -116,6 +119,7 @@
                   {
                     name = "Removal.ai";
                     url = "https://removal.ai/";
+                    keyword = "rai";
                   }
                 ];
               }
@@ -146,6 +150,7 @@
                   {
                     name = "Bambu Store";
                     url = "https://eu.store.bambulab.com/";
+                    keyword = "bs";
                   }
                 ];
               }
@@ -167,14 +172,17 @@
                   {
                     name = "NixOS Wiki";
                     url = "https://nixos.wiki/";
+                    keyword = "nw";
                   }
                   {
                     name = "Nixpkgs GitHub";
                     url = "https://github.com/NixOS/nixpkgs";
+                    keyword = "npg";
                   }
                   {
                     name = "Awesome Nix";
                     url = "https://github.com/nix-community/awesome-nix";
+                    keyword = "awx";
                   }
                   {
                     name = "Noogle";
@@ -200,6 +208,7 @@
                   {
                     name = "Digi4School";
                     url = "https://digi4school.at/ebooks";
+                    keyword = "d4s";
                   }
                   {
                     name = "EBCL";

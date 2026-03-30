@@ -7,6 +7,38 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    shellAliases = {
+      ls = "eza";
+      ll = "eza -l";
+      la = "eza -la";
+      tree = "eza --tree";
+      cat = "bat";
+      grep = "rg";
+      find = "fd";
+      top = "btop";
+      htop = "btop";
+      help = "tldr";
+
+      g = "git";
+      gst = "git status";
+      ga = "git add";
+      gc = "git commit -v";
+      gp = "git push";
+
+      nrs = "sudo nixos-rebuild switch";
+      hms = "home-manager switch";
+      nf = "nix fmt";
+      da = "direnv allow";
+
+      kplay = "mpv --vo=tct --panscan=1.0";
+    };
+
+    initContent = ''
+      ns() {
+        nix shell "nixpkgs#$1" "''${@:2}"
+      }
+    '';
+
     sessionVariables = {
       LANG = "en_GB.UTF-8";
     };
@@ -16,15 +48,6 @@
       path = "$HOME/.zsh_history";
       share = true;
     };
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "sudo"
-        "docker"
-      ];
-    };
   };
 
   programs.starship = {
@@ -33,7 +56,7 @@
       add_newline = true;
 
       format = ''
-        $directory$git_branch$git_status
+        $directory$git_branch$git_status$nix_shell
         $character
       '';
 
@@ -67,6 +90,45 @@
     };
   };
 
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+    shellWrapperName = "y";
+    settings = {
+      manager = {
+        show_hidden = true;
+        sort_by = "alphabetical";
+      };
+    };
+  };
+
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "gruvbox_dark_v2";
+      theme_background = false;
+      vim_keys = true;
+      update_ms = 1000;
+    };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    defaultOptions = [
+      "--height 40%"
+      "--layout=reverse"
+      "--border"
+      "--preview 'bat --color=always --style=numbers {}'"
+    ];
+  };
+
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    icons = "auto";
+  };
+
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
@@ -75,7 +137,23 @@
     ];
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableZshIntegration = true;
+    config = {
+      global = {
+        warn_timeout = "5s";
+      };
+    };
+  };
+
   home.packages = with pkgs; [
     nerd-fonts.symbols-only
+
+    bat
+    ripgrep
+    fd
+    tldr
   ];
 }

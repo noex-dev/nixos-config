@@ -35,11 +35,10 @@
     users.noel = {
       directories = [
         # Personal Folders
-        "Documents"
-        "Downloads"
-        "Pictures"
-        "Music"
-        "Videos"
+        "Data"
+        "Projects"
+        "Media"
+        "VMs"
 
         # Communication & Productivity
         ".config/discord"
@@ -51,29 +50,19 @@
         # Tools & System
         ".ssh"
         ".local/share/keyrings"
+        ".local/share/zoxide"
         ".config/OrcaSlicer"
 
         # Gaming
         ".local/share/Steam"
         ".steam"
-        ".var/app"
 
         # Firefox Persistent Data
-        ".mozilla/firefox/default/storage"
-        ".mozilla/firefox/default/extension-store"
+        ".mozilla"
       ];
 
       files = [
         ".zsh_history"
-
-        # Firefox Core
-        ".mozilla/firefox/default/logins.json"
-        ".mozilla/firefox/default/key4.db"
-        ".mozilla/firefox/default/cookies.sqlite"
-        ".mozilla/firefox/default/places.sqlite"
-        ".mozilla/firefox/default/extension-preferences.json"
-        ".mozilla/firefox/default/extension-settings.json"
-        ".mozilla/firefox/default/prefs.js"
       ];
     };
   };

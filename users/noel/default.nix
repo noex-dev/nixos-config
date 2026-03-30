@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  homeDir = "/home/noel";
+in
 {
   imports = [
     ../../modules/home-manager/hyprland
@@ -13,6 +16,24 @@
   ];
 
   home.username = "noel";
-  home.homeDirectory = "/home/noel";
+  home.homeDirectory = homeDir;
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    setSessionVariables = true;
+
+    documents = "${homeDir}/Data";
+    download = "${homeDir}/Temp";
+    desktop = "${homeDir}/Projects";
+
+    music = "${homeDir}/Media/Music";
+    pictures = "${homeDir}/Media/Pictures";
+    videos = "${homeDir}/Media/Videos";
+
+    templates = null;
+    publicShare = null;
+  };
+
   home.stateVersion = "25.11";
 }
