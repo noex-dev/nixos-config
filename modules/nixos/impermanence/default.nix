@@ -38,6 +38,7 @@
         "Data"
         "Projects"
         "Media"
+        "Games"
         "VMs"
 
         # Communication & Productivity

@@ -5,6 +5,10 @@
   lib,
   ...
 }:
+
+let
+  wallpaperSource = "${../../../assets/background/wallpaper001.png}";
+in
 {
   programs.hyprpanel = {
     enable = true;
@@ -13,11 +17,12 @@
     settings = {
       theme.matugen = true;
       theme.matugen_settings = {
-        wallpaper = "../../../assets/background/animated_dogs.jpg";
+        wallpaper = wallpaperSource;
         scheme = "scheme-tonal-spot";
+        type = "image";
       };
 
-      wallpaper.image = "../../../assets/background/animated_dogs.jpg";
+      wallpaper.image = wallpaperSource;
 
       bar = {
         layouts."0" = {

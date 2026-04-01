@@ -33,6 +33,11 @@ in
 
     templates = null;
     publicShare = null;
+
+    extraConfig = {
+      games = "${homeDir}/Games";
+      vms = "${homeDir}/VMs";
+    };
   };
 
   home.stateVersion = "25.11";

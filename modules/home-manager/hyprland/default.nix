@@ -5,23 +5,15 @@
 }:
 
 let
-  videoWallpaper = ../../../assets/background/animated_dogs.mp4;
-  fallbackImage = ../../../assets/background/animated_dogs.jpg;
-
-  startWallpaper = pkgs.writeShellScript "start-wallpaper" ''
-    pkill mpvpaper || true
-    pkill swaybg || true
-    sleep 1
-
-    MONITORS=$(${pkgs.hyprland}/bin/hyprctl monitors | grep "Monitor" | awk '{print $2}')
-
-    for m in $MONITORS; do
-      ${pkgs.swaybg}/bin/swaybg -o "$m" -i ${fallbackImage} -m fill &
-      ${pkgs.mpvpaper}/bin/mpvpaper -o "--loop --no-audio --panscan=1 --hwdec=auto" "$m" ${videoWallpaper} &
-    done
-  '';
+  wallpaperSource = "${../../../assets/background/wallpaper001.png}";
+  monitors = [
+    "DP-2"
+    "DP-3"
+  ];
 in
 {
+  home.packages = [ pkgs.swww ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -32,7 +24,8 @@ in
 
       exec-once = [
         "systemctl --user start hyprpolkitagent"
-        "${startWallpaper}"
+        "swww-daemon"
+        "swww img ${wallpaperSource}"
       ];
 
       input = {

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  screenshot = ../../../assets/background/animated_dogs.jpg;
+  wallpaperSource = "${../../../assets/background/wallpaper001.png}";
 in
 {
   programs.hyprlock = {
@@ -13,7 +13,7 @@ in
 
       background = [
         {
-          path = "${screenshot}";
+          path = wallpaperSource;
           blur_passes = 2;
           color = "rgba(26, 17, 15, 1.0)";
         }

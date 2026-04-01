@@ -8,7 +8,7 @@
     desktop = {
       wallpaper = lib.mkOption {
         type = lib.types.path;
-        default = "${self}assets/background/animated_dogs.jpg";
+        default = "${self}assets/background/wallpaper001.png";
       };
     };
   };
