@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
 
     ../common
+    ../../modules/nixos/plymouth
     ../../modules/nixos/lanzaboot
     ../../modules/nixos/disko
     ../../modules/nixos/impermanence

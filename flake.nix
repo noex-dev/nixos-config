@@ -25,6 +25,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mac-style-plymouth = {
+      url = "github:SergioRibera/s4rchiso-plymouth-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -35,8 +39,9 @@
       disko,
       impermanence,
       home-manager,
-      nur,
       sops-nix,
+      firefox-addons,
+      mac-style-plymouth,
       ...
     }@inputs:
     let
