@@ -35,6 +35,7 @@
     crypttabExtraOpts = [ "tpm2-device=auto" ];
   };
   networking.hostName = "p16s";
+  home-manager.backupFileExtension = "hm-backup";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -12,7 +12,14 @@ let
   ];
 in
 {
-  home.packages = [ pkgs.swww ];
+  home.packages = with pkgs; [
+    swww
+    grim
+    slurp
+    wl-clipboard
+  ];
+
+  services.cliphist.enable = true;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -26,6 +33,8 @@ in
         "systemctl --user start hyprpolkitagent"
         "swww-daemon"
         "swww img ${wallpaperSource}"
+        "wl-paste --type text --watch cliphist store"
+        "wl-paste --type image --watch cliphist store"
       ];
 
       input = {
@@ -90,11 +99,13 @@ in
         "CONTROL_$mod, Return, exec, rofi -show drun"
         "$mod, Q, killactive,"
         "$mod SHIFT, M, exit,"
-        "$mod, V, togglefloating,"
+        "$mod, SPACE, togglefloating,"
         "$mod, F, fullscreen,"
         "$mod, P, pseudo,"
         "$mod, J, togglesplit,"
         "$mod, L, exec, hyprlock"
+        "$mod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
+        "$mod, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
 
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
