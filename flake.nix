@@ -72,6 +72,7 @@
             {
               home-manager = {
                 useGlobalPkgs = true;
+                backupFileExtension = "hm-backup";
                 useUserPackages = true;
                 extraSpecialArgs = { inherit inputs self; };
                 users.noel = import ./users/noel/default.nix;

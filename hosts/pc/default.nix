@@ -27,8 +27,6 @@
     imports = [ ./monitor.nix ];
   };
 
-  home-manager.backupFileExtension = "hm-backup";
-
   boot.initrd.luks.devices."crypted" = {
     device = "/dev/disk/by-partlabel/disk-main-luks";
     crypttabExtraOpts = [ "tmp2-device=auto" ];

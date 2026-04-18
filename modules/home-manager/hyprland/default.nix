@@ -33,7 +33,7 @@ in
         "hyprlock"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE"
         "systemctl --user start hyprpolkitagent"
-        "swww-daemon && sleep 0.1 && swww img ${wallpaperSource}"
+        "swww-daemon & sleep 1 && swww img ${wallpaperSource}"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
       ];
