@@ -13,7 +13,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    swww
+    awww
     grim
     slurp
     wl-clipboard
@@ -33,7 +33,7 @@ in
         "hyprlock"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE"
         "systemctl --user start hyprpolkitagent"
-        "swww-daemon & sleep 1 && swww img ${wallpaperSource}"
+        "awww-daemon & sleep 1 && awww img ${wallpaperSource}"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
       ];

@@ -50,8 +50,8 @@
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      stdenv.hostPlatform.system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${stdenv.hostPlatform.system};
 
       mkSystem =
         hostname:
@@ -87,9 +87,9 @@
         p16s = mkSystem "p16s";
       };
 
-      formatter.${system} = pkgs.nixfmt-tree;
+      formatter.${stdenv.hostPlatform.system} = pkgs.nixfmt-tree;
 
-      apps.${system} = {
+      apps.${stdenv.hostPlatform.system} = {
         setup-secureboot = {
           type = "app";
           program = "${
