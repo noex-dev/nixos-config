@@ -40,6 +40,7 @@
     DEFAULT_BROWSER = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen";
   };
 
+  services.printing.enable = true;
   services.dbus.enable = true;
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
