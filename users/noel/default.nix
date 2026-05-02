@@ -12,6 +12,7 @@ in
     ../../modules/home-manager/zen
     ../../modules/home-manager/rofi
     ../../modules/home-manager/shell
+    ../../modules/home-manager/neovim
     ../../modules/home-manager/theme
   ];
 

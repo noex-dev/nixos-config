@@ -33,6 +33,10 @@
       url = "github:SergioRibera/s4rchiso-plymouth-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -47,6 +51,7 @@
       firefox-addons,
       zen-browser,
       mac-style-plymouth,
+      nixvim,
       ...
     }@inputs:
     let
