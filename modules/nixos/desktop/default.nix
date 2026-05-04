@@ -37,7 +37,9 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    DEFAULT_BROWSER = "${inputs.zen-browser.packages.${pkgs.system}.default}/bin/zen";
+    DEFAULT_BROWSER = "${
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    }/bin/zen";
   };
 
   services.printing.enable = true;
