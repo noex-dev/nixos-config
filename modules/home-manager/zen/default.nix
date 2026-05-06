@@ -45,12 +45,6 @@
           icon = "briefcase";
           color = "red";
         };
-        legacy = {
-          id = 4;
-          name = "Legacy";
-          icon = "fence";
-          color = "toolbar";
-        };
       };
 
       bookmarks = {
@@ -117,9 +111,9 @@
                 name = "Tools";
                 bookmarks = [
                   {
-                    name = "Gemini";
-                    url = "https://gemini.google.com/";
-                    keyword = "gai";
+                    name = "Claude AI";
+                    url = "https://claude.ai/";
+                    keyword = "cai";
                   }
                   {
                     name = "DeepL";
@@ -241,6 +235,46 @@
                   {
                     name = "EBCL";
                     url = "https://world.ebcl.eu/";
+                  }
+                ];
+              }
+              {
+                name = "HomeLab";
+                bookmarks = [
+                  {
+                    name = "Synology DS224+";
+                    url = "https://synology.noex.dev/";
+                    keyword = "snd";
+                  }
+                  {
+                    name = "Proxmox";
+                    url = "https://proxmox.noex.dev/";
+                    keyword = "pnd";
+                  }
+                  {
+                    name = "AI Server";
+                    url = "https://ai.noex.dev";
+                    keyword = "aind";
+                  }
+                  {
+                    name = "Adguard Home";
+                    url = "https://adguard.noex.dev/";
+                    keyword = "adnd";
+                  }
+                  {
+                    name = "Vaultwarden";
+                    url = "https://vaultwarden.noex.dev/";
+                    keyword = "vnd";
+                  }
+                  {
+                    name = "Uptime Kuma";
+                    url = "https://uptime.noex.dev";
+                    keyword = "und";
+                  }
+                  {
+                    name = "Home Assistant";
+                    url = "https://home-assistant.noex.dev/";
+                    keyword = "hand";
                   }
                 ];
               }

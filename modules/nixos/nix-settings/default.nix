@@ -21,4 +21,5 @@
   };
 
   boot.loader.systemd-boot.configurationLimit = 30;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }
