@@ -7,6 +7,17 @@
         "nix-command"
         "flakes"
       ];
+
+      substituters = [
+        "https://cache.noex.dev"
+        "https://cache.nixos.org"
+      ];
+
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      ];
+
+      connect-timeout = 5;
       auto-optimise-store = true;
     };
 
