@@ -49,6 +49,7 @@
     onlyoffice-desktopeditors
     signal-desktop
     discord
+    element-desktop
     orca-slicer
 
     vlc
