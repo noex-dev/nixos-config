@@ -42,6 +42,7 @@
         "VMs"
 
         # Communication & Productivity
+        ".config/Element"
         ".config/discord"
         ".config/Signal"
         ".config/Bitwarden"
