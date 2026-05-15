@@ -9,7 +9,6 @@
       ];
 
       substituters = [
-        "https://cache.noex.dev"
         "https://cache.nixos.org"
       ];
 

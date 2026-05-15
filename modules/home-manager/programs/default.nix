@@ -69,7 +69,7 @@
     swaybg
     mpvpaper
 
-    vscode
+    claude-code
   ];
 
   programs.kitty = {
