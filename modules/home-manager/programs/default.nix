@@ -23,19 +23,19 @@
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        identityFile = "/run/secrets/git_ssh_key";
-        identitiesOnly = true;
+        IdentityFile = "/run/secrets/git_ssh_key";
+        IdentitiesOnly = true;
       };
 
       "git.robo4you.at" = {
-        identityFile = "/run/secrets/git_ssh_key";
-        identitiesOnly = true;
+        IdentityFile = "/run/secrets/git_ssh_key";
+        IdentitiesOnly = true;
       };
 
       "*" = {
-        identityFile = [
+        IdentityFile = [
           "~/.ssh/id_ed25519"
           "~/.ssh/id_rsa"
         ];

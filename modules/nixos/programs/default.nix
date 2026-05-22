@@ -15,8 +15,6 @@
 
   virtualisation.docker.enable = true;
 
-  services.tailscale.enable = true;
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
