@@ -70,6 +70,7 @@
     mpvpaper
 
     claude-code
+    feishin
   ];
 
   programs.kitty = {
