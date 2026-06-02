@@ -48,7 +48,7 @@
               "dashboard"
               "hyprland-workspaces"
               "media"
-              "notifications"
+              "systray"
             ];
             center = [ "window-title" ];
             right = [
@@ -64,7 +64,8 @@
 
       modules.clock.format = "%H:%M:%S - %d.%m.%Y";
       modules."window-title".max-length = 40;
-      modules.notification.popup-duration = 3000;
+      modules.notification.popup-duration = 5000;
+      modules.notification.popup-action = "remove";
 
       wallpaper.engine-enabled = false;
     };
