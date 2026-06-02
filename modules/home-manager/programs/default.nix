@@ -45,7 +45,7 @@
 
   home.packages = with pkgs; [
     protonmail-desktop
-    bitwarden-desktop
+
     onlyoffice-desktopeditors
     signal-desktop
     discord
