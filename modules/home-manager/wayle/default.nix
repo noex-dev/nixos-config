@@ -1,5 +1,7 @@
 {
   pkgs,
+  lib,
+  osConfig,
   ...
 }:
 
@@ -55,9 +57,9 @@
               "volume"
               "bluetooth"
               "network"
-              "battery"
-              "clock"
-            ];
+            ]
+            ++ lib.optionals osConfig.noex.hardware.isLaptop [ "battery" ]
+            ++ [ "clock" ];
           }
         ];
       };

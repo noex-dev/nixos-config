@@ -1,11 +1,12 @@
 {
   config,
   pkgs,
+  osConfig,
   ...
 }:
 
 let
-  wallpaperSource = "${../../../assets/background/wallpaper001.png}";
+  wallpaperSource = osConfig.noex.desktop.wallpaper;
   monitors = [
     "DP-2"
     "DP-3"

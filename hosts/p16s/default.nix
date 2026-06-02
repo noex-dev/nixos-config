@@ -34,6 +34,8 @@
     device = "/dev/disk/by-partlabel/disk-main-luks";
     crypttabExtraOpts = [ "tpm2-device=auto" ];
   };
+  noex.hardware.isLaptop = true;
+
   networking.hostName = "p16s";
 
   boot.loader.systemd-boot.enable = true;
