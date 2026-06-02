@@ -54,6 +54,7 @@
         ".local/share/keyrings"
         ".local/share/zoxide"
         ".config/OrcaSlicer"
+        ".config/feishin"
 
         # Gaming
         ".local/share/Steam"
