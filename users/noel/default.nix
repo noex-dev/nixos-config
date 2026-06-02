@@ -14,6 +14,7 @@ in
     ../../modules/home-manager/shell
     ../../modules/home-manager/neovim
     ../../modules/home-manager/theme
+    ../../modules/home-manager/fastfetch
   ];
 
   home.username = "noel";

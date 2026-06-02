@@ -408,7 +408,6 @@
 
   home.packages = with pkgs; [
     nerd-fonts.symbols-only
-    fastfetch
     bat
     ripgrep
     fd

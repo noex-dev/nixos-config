@@ -10,6 +10,10 @@
         type = lib.types.path;
         default = "${self}/assets/background/wallpaper001.png";
       };
+      fastfetchLogo = lib.mkOption {
+        type = lib.types.path;
+        default = "${self}/assets/fastfetch/nixos_logo_1.webp";
+      };
     };
   };
 }
