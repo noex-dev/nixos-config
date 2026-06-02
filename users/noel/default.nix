@@ -7,7 +7,7 @@ in
   imports = [
     ../../modules/home-manager/hyprland
     ../../modules/home-manager/hyprlock
-    ../../modules/home-manager/hyprpanel
+    ../../modules/home-manager/wayle
     ../../modules/home-manager/programs
     ../../modules/home-manager/zen
     ../../modules/home-manager/rofi
