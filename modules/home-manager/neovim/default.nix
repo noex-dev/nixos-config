@@ -4,6 +4,7 @@
 
   programs.nixvim = {
     enable = true;
+    nixpkgs.source = inputs.nixvim.inputs.nixpkgs;
 
     defaultEditor = true;
     viAlias = true;
