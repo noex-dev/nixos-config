@@ -14,6 +14,7 @@
     ../../modules/nixos/virtualisation
     ../../modules/nixos/network
     ../../modules/nixos/programs
+    ../../modules/nixos/printing
   ];
 
   noex.hardware.hasNvidia = true;

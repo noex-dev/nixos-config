@@ -20,6 +20,7 @@
     ../../modules/nixos/virtualisation
     ../../modules/nixos/network
     ../../modules/nixos/programs
+    ../../modules/nixos/printing
   ];
 
   boot.kernelModules = [

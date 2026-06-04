@@ -19,6 +19,9 @@
       "/etc/NetworkManager/system-connections"
       "/etc/ssh"
 
+      # Printing
+      "/var/lib/cups"
+
       # Virtualization
       "/var/lib/libvirt"
       "/etc/libvirt"
