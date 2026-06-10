@@ -17,6 +17,8 @@
     "d /var/log/swtpm/libvirt/qemu 0755 qemu-libvirtd libvirtd -"
   ];
 
+  boot.extraModprobeConfig = "options kvm_amd nested=1";
+
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 

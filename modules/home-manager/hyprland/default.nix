@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   osConfig,
   ...
@@ -7,10 +6,6 @@
 
 let
   wallpaperSource = osConfig.noex.desktop.wallpaper;
-  monitors = [
-    "DP-2"
-    "DP-3"
-  ];
 in
 {
   home.packages = with pkgs; [
@@ -78,6 +73,10 @@ in
 
         dwindle = {
           preserve_split = true;
+        };
+
+        xwayland = {
+          force_zero_scaling = true;
         };
       };
     };

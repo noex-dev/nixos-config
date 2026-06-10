@@ -47,7 +47,6 @@
     protonmail-desktop
 
     onlyoffice-desktopeditors
-    signal-desktop
     discord
     element-desktop
     orca-slicer

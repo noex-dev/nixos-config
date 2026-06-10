@@ -66,6 +66,11 @@
         # Persistent Browser Data
         ".mozilla"
         ".config/zen"
+
+        # Temp!
+        ".gradle"
+        ".android"
+        "Android"
       ];
 
       files = [
