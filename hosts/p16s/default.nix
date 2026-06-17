@@ -21,6 +21,7 @@
     ../../modules/nixos/network
     ../../modules/nixos/programs
     ../../modules/nixos/printing
+    ../../modules/nixos/vpn
   ];
 
   boot.kernelModules = [
@@ -36,6 +37,9 @@
     crypttabExtraOpts = [ "tpm2-device=auto" ];
   };
   noex.hardware.isLaptop = true;
+
+  noex.vpn.enable = true;
+  noex.vpn.address = "10.60.0.10/32";
 
   networking.hostName = "p16s";
 
