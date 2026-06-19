@@ -164,11 +164,37 @@
         autoEnableSources = true;
         settings = {
           sources = [
-            { name = "nvim_lsp"; }
-            { name = "luasnip"; }
-            { name = "path"; }
-            { name = "buffer"; }
+            {
+              name = "nvim_lsp";
+              priority = 1000;
+            }
+            {
+              name = "luasnip";
+              priority = 750;
+            }
+            {
+              name = "path";
+              priority = 500;
+            }
+            {
+              name = "buffer";
+              priority = 250;
+              keyword_length = 3;
+            }
           ];
+          sorting.comparators = [
+            "require('cmp.config.compare').offset"
+            "require('cmp.config.compare').exact"
+            "require('cmp.config.compare').score"
+            "require('cmp.config.compare').recently_used"
+            "require('cmp.config.compare').kind"
+            "require('cmp.config.compare').length"
+            "require('cmp.config.compare').order"
+          ];
+          window = {
+            completion.border = "rounded";
+            documentation.border = "rounded";
+          };
           snippet.expand = ''
             function(args) require('luasnip').lsp_expand(args.body) end
           '';
@@ -185,6 +211,18 @@
       };
       luasnip.enable = true;
       friendly-snippets.enable = true;
+
+      lspkind = {
+        enable = true;
+        settings.cmp.menu = {
+          nvim_lsp = "[LSP]";
+          luasnip = "[Snippet]";
+          buffer = "[Buffer]";
+          path = "[Path]";
+        };
+      };
+
+      fidget.enable = true;
 
       conform-nvim = {
         enable = true;
@@ -229,9 +267,27 @@
       oil = {
         enable = true;
         settings = {
-          default_file_explorer = true;
+          default_file_explorer = false;
           view_options.show_hidden = true;
           delete_to_trash = true;
+        };
+      };
+
+      neo-tree = {
+        enable = true;
+        settings = {
+          close_if_last_window = true;
+          enable_git_status = true;
+          enable_diagnostics = true;
+          window = {
+            width = 32;
+            position = "left";
+          };
+          filesystem = {
+            follow_current_file.enabled = true;
+            use_libuv_file_watcher = true;
+            filtered_items.hide_dotfiles = false;
+          };
         };
       };
 
@@ -241,7 +297,30 @@
       };
       bufferline.enable = true;
       which-key.enable = true;
-      noice.enable = true;
+      noice = {
+        enable = true;
+        settings = {
+          lsp = {
+            override = {
+              "vim.lsp.util.convert_input_to_markdown_lines" = true;
+              "vim.lsp.util.stylize_markdown" = true;
+              "cmp.entry.get_documentation" = true;
+            };
+            hover.enabled = true;
+            signature = {
+              enabled = true;
+              auto_open = {
+                enabled = true;
+                trigger = true;
+                throttle = 50;
+              };
+            };
+          };
+          presets = {
+            lsp_doc_border = true;
+          };
+        };
+      };
       notify.enable = true;
       indent-blankline.enable = true;
 
@@ -366,9 +445,54 @@
       {
         mode = "n";
         key = "<leader>e";
+        action = "<cmd>Neotree toggle<CR>";
+        options.desc = "Toggle file sidebar";
+      }
+      {
+        mode = "n";
+        key = "<C-b>";
+        action = "<cmd>Neotree toggle<CR>";
+        options.desc = "Toggle file sidebar";
+      }
+      {
+        mode = "n";
+        key = "<leader>E";
+        action = "<cmd>Neotree reveal<CR>";
+        options.desc = "Reveal current file in sidebar";
+      }
+      {
+        mode = "n";
+        key = "<leader>o";
         action = "<cmd>Oil<CR>";
-        options.desc = "File explorer";
+        options.desc = "Oil file explorer";
+      }
+
+      {
+        mode = [
+          "n"
+          "i"
+        ];
+        key = "<C-k>";
+        action = "<cmd>lua vim.lsp.buf.signature_help()<CR>";
+        options.desc = "Signature help";
       }
     ];
+
+    extraConfigLua = ''
+      vim.diagnostic.config({
+        virtual_text = { prefix = "●", spacing = 2 },
+        float = { border = "rounded", source = true },
+        severity_sort = true,
+        underline = true,
+        update_in_insert = false,
+      })
+
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover, { border = "rounded" }
+      )
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help, { border = "rounded" }
+      )
+    '';
   };
 }
