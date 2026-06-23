@@ -70,6 +70,7 @@
 
     claude-code
     feishin
+    anytype
   ];
 
   programs.kitty = {
