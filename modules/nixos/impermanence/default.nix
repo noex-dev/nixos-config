@@ -50,6 +50,7 @@
         ".config/Signal"
         ".config/Bitwarden"
         ".config/Proton Mail"
+        ".config/anytype"
         ".local/share/Anki2"
 
         # Tools & System

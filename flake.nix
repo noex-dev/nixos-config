@@ -102,6 +102,7 @@
                 pkgs.systemd
                 pkgs.util-linux
                 pkgs.coreutils
+                pkgs.cryptsetup
               ];
               text = builtins.readFile ./scripts/setup-secureboot.sh;
             }
