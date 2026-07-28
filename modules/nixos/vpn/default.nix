@@ -19,6 +19,7 @@ in
 
     networking.wg-quick.interfaces.vpn = {
       address = [ cfg.address ];
+      mtu = 1380;
       privateKeyFile = config.sops.secrets.wg_private_key.path;
 
       peers = [
