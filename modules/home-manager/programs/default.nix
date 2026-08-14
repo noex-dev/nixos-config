@@ -43,8 +43,31 @@
     };
   };
 
+  systemd.user.services.bitwarden = {
+    Unit = {
+      Description = "Bitwarden";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.bitwarden-desktop}/bin/bitwarden";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
+  home.file.".config/sops/age/keys.txt".text = ''
+    AGE-PLUGIN-YUBIKEY-1VPUP2QVZCYWQ0CS7M888S
+  '';
+
   home.packages = with pkgs; [
     protonmail-desktop
+
+    sops
+    age-plugin-yubikey
 
     onlyoffice-desktopeditors
     discord

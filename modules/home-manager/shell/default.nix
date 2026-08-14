@@ -36,6 +36,8 @@
     };
 
     initContent = ''
+      unsetopt HIST_SAVE_BY_COPY
+
       ns() {
         nix shell "nixpkgs#$1" "''${@:2}"
       }

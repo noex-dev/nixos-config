@@ -20,11 +20,12 @@
 
       extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         darkreader
-        bitwarden
         ublock-origin
         snowflake
         multi-account-containers
       ];
+
+      containersForce = true;
 
       containers = {
         entertainment = {

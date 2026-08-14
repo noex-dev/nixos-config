@@ -18,6 +18,7 @@
       "/var/lib/networkmanager"
       "/etc/NetworkManager/system-connections"
       "/etc/ssh"
+      "/var/lib/fprint"
 
       # Printing
       "/var/lib/cups"
@@ -72,6 +73,7 @@
 
       files = [
         ".zsh_history"
+        ".claude.json"
       ];
     };
   };

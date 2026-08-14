@@ -37,6 +37,7 @@
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
     DEFAULT_BROWSER = "${
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     }/bin/zen";

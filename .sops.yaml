@@ -2,7 +2,10 @@ creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
       - age:
-        # Bitwarden: Editor Key
+        # YubiKey: Editor Key
+        - age1yubikey1qv9874nj99ey37583n7uunlqyz38qesarg9yq903xznkak6wyq0dwssr3r3
+
+        # Bitwarden: Editor Key (Backup, bis zweiter YubiKey enrolled ist)
         - age1jduzksjl7nsegr9h5mngfpthzwc52tcj4f82cyjert9qsr4rxufs96wt45
 
         # Host Key "pc"
