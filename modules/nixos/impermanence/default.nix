@@ -24,6 +24,7 @@
       "/var/lib/cups"
 
       # Virtualization
+      "/var/lib/docker"
       "/var/lib/libvirt"
       "/etc/libvirt"
       "/var/lib/swtpm"
