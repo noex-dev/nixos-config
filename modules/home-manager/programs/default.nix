@@ -34,11 +34,15 @@
         IdentitiesOnly = true;
       };
 
-      "*" = {
-        IdentityFile = [
-          "~/.ssh/id_ed25519"
-          "~/.ssh/id_rsa"
-        ];
+      "k3s01 k3s01.noex.dev" = {
+        HostName = "k3s01.noex.dev";
+        User = "root";
+        IdentityAgent = "none";
+        IdentityFile = "~/.ssh/id_ed25519_sk";
+        IdentitiesOnly = true;
+        ControlMaster = "auto";
+        ControlPath = "~/.ssh/cm-%r@%h:%p";
+        ControlPersist = "10m";
       };
     };
   };
