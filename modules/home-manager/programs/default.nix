@@ -97,7 +97,8 @@
 
     claude-code
     feishin
-    anytype
+    # anytype broken since 0.56.5 (node_modules build fails)
+    # anytype
   ];
 
   programs.kitty = {
