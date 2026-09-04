@@ -10,12 +10,12 @@
       # System Services
       "/var/log"
       "/var/lib/nixos"
-      "/var/lib/systemd/coredump"
+      "/var/lib/systemd"
       "/etc/secureboot"
 
       # Networking & Security
       "/var/lib/bluetooth"
-      "/var/lib/networkmanager"
+      "/var/lib/NetworkManager"
       "/etc/NetworkManager/system-connections"
       "/etc/ssh"
       "/var/lib/fprint"

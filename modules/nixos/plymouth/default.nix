@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -26,5 +28,5 @@
     "vt.global_cursor_default=0"
   ];
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = lib.optionals (!config.noex.hardware.hasNvidia) [ "amdgpu" ];
 }
