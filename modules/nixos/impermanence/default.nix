@@ -44,7 +44,7 @@
         "Projects"
         "Media"
         "Games"
-        "VMs"
+        "Shared"
 
         # Communication & Productivity
         ".config/Element"

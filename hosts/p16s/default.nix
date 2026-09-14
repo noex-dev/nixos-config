@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   inputs,
   ...
 }:
@@ -37,6 +36,9 @@
     crypttabExtraOpts = [ "tpm2-device=auto" ];
   };
   noex.hardware.isLaptop = true;
+
+  noex.vms.enable = true;
+  noex.vms.tiny11.installMode = false;
 
   noex.vpn.enable = true;
   noex.vpn.address = "10.60.0.10/32";

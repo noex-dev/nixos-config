@@ -1,0 +1,8 @@
+<volume>
+  <name>@name@.qcow2</name>
+  <capacity unit="GiB">@capacity@</capacity>
+  <target>
+    <format type="qcow2"/>
+  </target>
+  @backingStore@
+</volume>

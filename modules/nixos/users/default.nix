@@ -8,6 +8,7 @@
       "networkmanager"
       "docker"
       "kvm"
+      "libvirtd"
     ];
     shell = pkgs.zsh;
     hashedPasswordFile = config.sops.secrets.noel_password.path;

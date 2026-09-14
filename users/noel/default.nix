@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 let
   homeDir = "/home/noel";
@@ -37,8 +37,8 @@ in
     publicShare = null;
 
     extraConfig = {
-      games = "${homeDir}/Games";
-      vms = "${homeDir}/VMs";
+      GAMES = "${homeDir}/Games";
+      SHARED = "${homeDir}/Shared";
     };
   };
 

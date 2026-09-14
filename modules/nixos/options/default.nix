@@ -11,6 +11,10 @@
         type = lib.types.str;
       };
     };
+    vms = {
+      enable = lib.mkEnableOption "declarative libvirt VMs via NixVirt";
+      tiny11.installMode = lib.mkEnableOption "install media (Tiny11 + virtio-win) attached to tiny11-base";
+    };
     desktop = {
       wallpaper = lib.mkOption {
         type = lib.types.path;
