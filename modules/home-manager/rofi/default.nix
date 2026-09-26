@@ -1,10 +1,10 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 
 {
   programs.rofi = {
     enable = true;
 
-    extraConfig = {
+    settings = {
       display-drun = ">";
       drun-display-format = "{name}";
       show-icons = true;

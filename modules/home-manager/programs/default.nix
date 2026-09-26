@@ -102,6 +102,9 @@
 
     # for school
     qtcreator
+
+    bitwig-studio
+    guitarix
   ];
 
   programs.kitty = {
