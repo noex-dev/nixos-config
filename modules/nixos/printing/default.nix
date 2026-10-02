@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   printerIp = "10.40.0.15";
@@ -48,6 +48,18 @@ let
 in
 {
   services.printing.enable = true;
+
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "HP_Envy_6000";
+        description = "HP ENVY 6000";
+        deviceUri = "ipp://${printerIp}/ipp/print";
+        model = "everywhere";
+      }
+    ];
+    ensureDefaultPrinter = "HP_Envy_6000";
+  };
 
   services.avahi = {
     enable = true;
