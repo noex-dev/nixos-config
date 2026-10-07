@@ -61,6 +61,7 @@
         ".local/share/zoxide"
         ".config/OrcaSlicer"
         ".config/feishin"
+        ".local/share/opencode"
         ".claude"
 
         # Gaming

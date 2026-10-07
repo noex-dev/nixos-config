@@ -13,6 +13,10 @@
       owner = "noel";
     };
 
+    secrets.r4u_aqueduct_api_key = {
+      owner = "noel";
+    };
+
     secrets.noel_password = {
       neededForUsers = true;
     };

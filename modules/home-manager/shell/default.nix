@@ -41,6 +41,9 @@
       ns() {
         nix shell "nixpkgs#$1" "''${@:2}"
       }
+
+      export OPENAI_API_KEY="$(cat /run/secrets/r4u_aqueduct_api_key)"
+      export OPENAI_BASE_URL="https://futurelab.robo4you.at/v1"
     '';
 
     sessionVariables = {

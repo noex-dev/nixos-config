@@ -117,6 +117,22 @@
     };
   };
 
+  programs.opencode = {
+    enable = true;
+    settings = {
+      model = "futurelab/qwen3.8-flash-next";
+      provider.futurelab = {
+        npm = "@ai-sdk/openai-compatible";
+        name = "Futurelab";
+        options = {
+          baseURL = "https://futurelab.robo4you.at/v1";
+          apiKey = "{file:/run/secrets/r4u_aqueduct_api_key}";
+        };
+        models."qwen3.8-flash-next".name = "Qwen 3.8 Flash Next";
+      };
+    };
+  };
+
   programs.rofi.enable = true;
   programs.home-manager.enable = true;
 }
