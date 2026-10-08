@@ -97,8 +97,7 @@
 
     claude-code
     feishin
-    # anytype broken since 0.56.5 (node_modules build fails)
-    # anytype
+    anytype
 
     # for school
     qtcreator
