@@ -11,4 +11,8 @@
   ];
 
   system.stateVersion = "25.11";
+
+  zramSwap.enable = true;
+
+  services.journald.settings.Journal.SystemMaxUse = "500M";
 }
