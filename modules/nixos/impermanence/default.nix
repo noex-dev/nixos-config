@@ -67,6 +67,7 @@
         # Gaming
         ".local/share/Steam"
         ".steam"
+        ".local/share/anime-game-launcher"
 
         # Persistent Browser Data
         ".mozilla"

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -15,6 +15,7 @@
     ../../modules/nixos/network
     ../../modules/nixos/programs
     ../../modules/nixos/printing
+    ../../modules/nixos/aagl
   ];
 
   noex.hardware.hasNvidia = true;
