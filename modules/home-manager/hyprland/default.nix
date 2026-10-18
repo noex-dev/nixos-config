@@ -17,6 +17,13 @@ in
 
   services.cliphist.enable = true;
 
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+    tray = "auto";
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     configType = "lua";
