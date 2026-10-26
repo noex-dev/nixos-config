@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   printerIp = "10.40.0.15";
@@ -48,6 +48,7 @@ let
 in
 {
   services.printing.enable = true;
+  systemd.services.cups.postStart = lib.mkBefore "set +e";
 
   hardware.printers = {
     ensurePrinters = [

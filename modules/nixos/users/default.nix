@@ -9,6 +9,7 @@
       "docker"
       "kvm"
       "libvirtd"
+      "dialout"
     ];
     shell = pkgs.zsh;
     hashedPasswordFile = config.sops.secrets.noel_password.path;
