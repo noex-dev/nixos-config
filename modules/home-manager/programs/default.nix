@@ -34,11 +34,10 @@
         IdentitiesOnly = true;
       };
 
-      "k3s01 k3s01.noex.dev" = {
-        HostName = "k3s01.noex.dev";
+      "10.30.0.*" = {
         User = "root";
         IdentityAgent = "none";
-        IdentityFile = "~/.ssh/id_ed25519_sk";
+        IdentityFile = "~/.ssh/id_ed25519_sk_yk5";
         IdentitiesOnly = true;
         ControlMaster = "auto";
         ControlPath = "~/.ssh/cm-%r@%h:%p";
