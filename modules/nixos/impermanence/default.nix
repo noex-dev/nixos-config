@@ -53,6 +53,7 @@
         ".config/Bitwarden"
         ".config/Proton Mail"
         ".config/anytype"
+        ".config/Claude"
         ".local/share/Anki2"
 
         # Tools & System

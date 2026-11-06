@@ -10,6 +10,10 @@
     lfs.enable = true;
   };
 
+  # Claude Desktop downloads its own checksum-pinned Claude Code binary
+  # (generic glibc ELF) into ~/.config/Claude; nix-ld lets it run unpatched.
+  programs.nix-ld.enable = true;
+
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 

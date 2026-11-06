@@ -97,6 +97,7 @@
     mpvpaper
 
     claude-code
+    (callPackage ../../../pkgs/claude-desktop/package.nix { })
     feishin
     (anytype.overrideAttrs (old: {
       node_modules = old.node_modules.overrideAttrs {
