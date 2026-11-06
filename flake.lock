@@ -67,16 +67,16 @@
         "dir": "pkgs/firefox-addons",
         "lastModified": 1793937760,
         "narHash": "sha256-XOF2XZRZl5PxVzbyIMIIqp0cuVQFoSeluW9ldBQL5QA=",
-        "owner": "rycee",
-        "repo": "nur-expressions",
+        "ref": "refs/heads/master",
         "rev": "b8553c5899fad80dcff1b61f22897b2dfe039c34",
-        "type": "gitlab"
+        "revCount": 5034,
+        "type": "git",
+        "url": "https://gitlab.com/rycee/nur-expressions"
       },
       "original": {
         "dir": "pkgs/firefox-addons",
-        "owner": "rycee",
-        "repo": "nur-expressions",
-        "type": "gitlab"
+        "type": "git",
+        "url": "https://gitlab.com/rycee/nur-expressions"
       }
     },
     "flake-compat": {
