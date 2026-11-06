@@ -23,7 +23,15 @@
         ublock-origin
         snowflake
         multi-account-containers
+        proton-vpn
       ];
+
+      settings = {
+        "widget.dmabuf.force-enabled" = true;
+        "gfx.webrender.all" = true;
+        "media.ffmpeg.vaapi.enabled" = true;
+        "media.hardware-video-decoding.force-enabled" = true;
+      };
 
       containersForce = true;
 
