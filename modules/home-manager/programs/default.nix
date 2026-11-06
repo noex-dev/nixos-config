@@ -98,7 +98,11 @@
 
     claude-code
     feishin
-    anytype
+    (anytype.overrideAttrs (old: {
+      node_modules = old.node_modules.overrideAttrs {
+        outputHash = "sha256-/rHV3hmqAGGhp+x56u49+ZYm8YiV4ie0R5FIHlSguz4=";
+      };
+    }))
 
     # for school
     qtcreator
@@ -119,6 +123,11 @@
 
   programs.opencode = {
     enable = true;
+    package = pkgs.opencode.overrideAttrs (old: {
+      node_modules = old.node_modules.overrideAttrs {
+        outputHash = "sha256-prx9dX7kUvs/E3zopkaPk5LXh3xJAy5sZeum/W8L7cA=";
+      };
+    });
     settings = {
       model = "futurelab/qwen3.8-flash-next";
       provider.futurelab = {
