@@ -20,5 +20,11 @@
     secrets.noel_password = {
       neededForUsers = true;
     };
+
+    secrets.kubeconfig = {
+      sopsFile = ../../../secrets/kubeconfig.yaml;
+      format = "binary";
+      owner = "noel";
+    };
   };
 }

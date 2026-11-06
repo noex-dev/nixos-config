@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.git = {
@@ -45,6 +45,8 @@
       };
     };
   };
+
+  home.file.".kube/kube.yaml".source = config.lib.file.mkOutOfStoreSymlink "/run/secrets/kubeconfig";
 
   systemd.user.services.bitwarden = {
     Unit = {
