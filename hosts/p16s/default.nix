@@ -39,6 +39,7 @@
 
   noex.vms.enable = true;
   noex.vms.tiny11.installMode = false;
+  noex.vms.kali.installMode = false;
 
   noex.vpn.enable = true;
   noex.vpn.address = "10.60.0.10/32";

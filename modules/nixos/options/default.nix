@@ -14,6 +14,7 @@
     vms = {
       enable = lib.mkEnableOption "declarative libvirt VMs via NixVirt";
       tiny11.installMode = lib.mkEnableOption "install media (Tiny11 + virtio-win) attached to tiny11-base";
+      kali.installMode = lib.mkEnableOption "Kali installer ISO attached to kali";
     };
     desktop = {
       wallpaper = lib.mkOption {

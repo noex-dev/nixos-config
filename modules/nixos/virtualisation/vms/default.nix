@@ -14,6 +14,11 @@ let
     hash = "sha256-eySBWEVoSt1yUICLOwAnuk6Uz1LGLp70DVuWXdME1so=";
   };
 
+  kaliIso = pkgs.fetchurl {
+    url = "https://cdimage.kali.org/kali-2026.3/kali-linux-2026.3-installer-amd64.iso";
+    hash = "sha256-25y+0z7bRXJ9FpEYE8JDT80UGVhQB4hBU74ioDsw7C8=";
+  };
+
   cdrom = dev: iso: extra: ''
     <disk type="file" device="cdrom">
           <driver name="qemu" type="raw"/>
@@ -23,9 +28,9 @@ let
           ${extra}
         </disk>'';
 
-  tiny11Domain =
-    name: uuid: mac: extraDevices:
-    pkgs.replaceVars ./tiny11.xml {
+  domain =
+    template: name: uuid: mac: extraDevices:
+    pkgs.replaceVars template {
       inherit
         name
         uuid
@@ -34,9 +39,11 @@ let
         ;
     };
 
-  tiny11Volume =
+  tiny11Domain = domain ./tiny11.xml;
+
+  volume =
     name: capacity: backingStore:
-    pkgs.replaceVars ./volume-tiny11.xml {
+    pkgs.replaceVars ./volume.xml {
       inherit name backingStore;
       capacity = toString capacity;
     };
@@ -50,6 +57,10 @@ let
   tiny11School =
     tiny11Domain "tiny11-school" "139eb486-590a-4883-a9d7-df94f3f044ea" "52:54:00:e5:70:a5"
       "";
+
+  kali = domain ./kali.xml "kali" "5955e3da-67b7-4a17-9706-510c08bf862b" "52:54:00:b3:b5:ae" (
+    lib.optionalString cfg.kali.installMode (cdrom "sda" kaliIso ''<boot order="1"/>'')
+  );
 
   schoolEnabled = !cfg.tiny11.installMode;
 in
@@ -78,10 +89,11 @@ in
             definition = ./pool-default.xml;
             active = true;
             volumes = [
-              { definition = tiny11Volume "tiny11-base" 64 ""; }
+              { definition = volume "tiny11-base" 64 ""; }
+              { definition = volume "kali" 64 ""; }
             ]
             ++ lib.optional schoolEnabled {
-              definition = tiny11Volume "tiny11-school" 128 ''
+              definition = volume "tiny11-school" 128 ''
                 <backingStore>
                     <path>/var/lib/libvirt/images/tiny11-base.qcow2</path>
                     <format type="qcow2"/>
@@ -90,15 +102,20 @@ in
           }
         ];
 
-        domains =
-          lib.optional cfg.tiny11.installMode {
-            definition = tiny11Base;
+        domains = [
+          {
+            definition = kali;
             restart = false;
           }
-          ++ lib.optional schoolEnabled {
-            definition = tiny11School;
-            restart = false;
-          };
+        ]
+        ++ lib.optional cfg.tiny11.installMode {
+          definition = tiny11Base;
+          restart = false;
+        }
+        ++ lib.optional schoolEnabled {
+          definition = tiny11School;
+          restart = false;
+        };
       };
     };
   };
