@@ -22,6 +22,9 @@
 
       connect-timeout = 5;
       auto-optimise-store = true;
+
+      max-jobs = 4;
+      cores = 4;
     };
 
     gc = {
@@ -32,6 +35,12 @@
     };
 
     optimise.automatic = true;
+  };
+
+  systemd.services.nix-daemon.serviceConfig = {
+    MemoryHigh = "35%";
+    MemoryMax = "40%";
+    MemorySwapMax = "2G";
   };
 
   boot.loader.systemd-boot.configurationLimit = 30;
