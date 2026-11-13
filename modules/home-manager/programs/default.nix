@@ -99,11 +99,21 @@
     claude-code
     (callPackage ../../../pkgs/claude-desktop/package.nix { })
     feishin
-    (anytype.overrideAttrs (old: {
-      node_modules = old.node_modules.overrideAttrs {
-        outputHash = "sha256-/rHV3hmqAGGhp+x56u49+ZYm8YiV4ie0R5FIHlSguz4=";
-      };
-    }))
+    (anytype.override {
+      anytype-heart =
+        (anytype-heart.override {
+          tantivy-go = tantivy-go.overrideAttrs (old: {
+            nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkg-config ];
+            buildInputs = (old.buildInputs or [ ]) ++ [ zstd ];
+          });
+        }).overrideAttrs
+          (old: {
+            buildInputs = (old.buildInputs or [ ]) ++ [ zstd ];
+            env = (old.env or { }) // {
+              NIX_LDFLAGS = "-lzstd";
+            };
+          });
+    })
 
     # for school
     qtcreator
