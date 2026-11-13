@@ -99,21 +99,7 @@
     claude-code
     (callPackage ../../../pkgs/claude-desktop/package.nix { })
     feishin
-    (anytype.override {
-      anytype-heart =
-        (anytype-heart.override {
-          tantivy-go = tantivy-go.overrideAttrs (old: {
-            nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkg-config ];
-            buildInputs = (old.buildInputs or [ ]) ++ [ zstd ];
-          });
-        }).overrideAttrs
-          (old: {
-            buildInputs = (old.buildInputs or [ ]) ++ [ zstd ];
-            env = (old.env or { }) // {
-              NIX_LDFLAGS = "-lzstd";
-            };
-          });
-    })
+    anytype
 
     # for school
     qtcreator
@@ -134,11 +120,6 @@
 
   programs.opencode = {
     enable = true;
-    package = pkgs.opencode.overrideAttrs (old: {
-      node_modules = old.node_modules.overrideAttrs {
-        outputHash = "sha256-prx9dX7kUvs/E3zopkaPk5LXh3xJAy5sZeum/W8L7cA=";
-      };
-    });
     settings = {
       model = "futurelab/qwen3.8-flash-next";
       provider.futurelab = {

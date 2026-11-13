@@ -8,9 +8,6 @@
 {
   services.wayle = {
     enable = true;
-    package = pkgs.wayle.overrideAttrs (old: {
-      buildInputs = old.buildInputs ++ [ pkgs.sqlite ];
-    });
 
     settings = {
       styling = {
